@@ -4,6 +4,7 @@ import cv2
 import os
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import pickle
 from tensorflow import keras
 from keras import layers as tfl
 from sklearn import preprocessing
@@ -142,3 +143,5 @@ test_dataset = tf.data.Dataset.from_tensor_slices((X_test, y_test)).batch(90)
 history = conv_model.fit(train_dataset, epochs=5, validation_data=val_dataset)
 
 conv_model.evaluate(X_test, y_test)
+
+pickle.dump(conv_model, open('fingers_number_model.sav', 'wb'))
